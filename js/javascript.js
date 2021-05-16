@@ -10,6 +10,7 @@ let btnMouseOn = document.getElementById('btn-mouse-show');
 let redBlock = document.getElementById('red-block');
 let inputFocus = document.getElementById('focus-input');
 let greenBlock = document.getElementById('green-block');
+let btnShowImg = document.getElementById('btn-show-img');
 
 let clicksField = document.createElement('div');
 let clicksFieldParagraph = document.createElement('p');
@@ -31,6 +32,17 @@ btnMouseOn.addEventListener("mouseover", showRedBlock);
 btnMouseOn.addEventListener("mouseout", hideRedBlock);
 inputFocus.addEventListener("focus", showGreenBlock);
 inputFocus.addEventListener("input", hideGreenBlock);
+btnShowImg.addEventListener("click", addImage);
+
+function addImage() {
+    let inputLink = document.getElementById('link-input');
+    let imgField = document.createElement('div');
+    let img = document.createElement('img');
+    let parentToAppend = document.querySelector('.exercise:nth-child(8)');
+    imgField.appendChild(img);
+    parentToAppend.appendChild(imgField);
+    img.src = inputLink.value;
+}
 
 function hideGreenBlock() {
     greenBlock.classList.add('hidden');
