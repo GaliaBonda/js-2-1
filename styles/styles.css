@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .container {
   padding: 20px;
   text-align: center;
@@ -41,7 +45,7 @@
   column-gap: 20px;
 }
 
-.selector-input {
+.input {
   display: block;
   margin: 30px auto;
 }
@@ -49,4 +53,18 @@
 .yellow-block {
   background-color: yellow;
   border: 2px solid black;
+}
+
+.red-block {
+  background-color: red;
+  border: 2px solid black;
+  width: 50px;
+  height: 50px;
+}
+
+.green-block {
+  background-color: green;
+  border: 2px solid black;
+  width: 50px;
+  height: 20px;
 }

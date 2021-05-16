@@ -6,6 +6,10 @@ let btnHideShowAll = document.getElementById('btn-hide-show-all');
 let btnSelectorHide = document.getElementById('hide-by-selector');
 let yellowBlock = document.getElementById('yellow-block');
 let clicksCounter = 0;
+let btnMouseOn = document.getElementById('btn-mouse-show');
+let redBlock = document.getElementById('red-block');
+let inputFocus = document.getElementById('focus-input');
+let greenBlock = document.getElementById('green-block');
 
 let clicksField = document.createElement('div');
 let clicksFieldParagraph = document.createElement('p');
@@ -23,6 +27,26 @@ btnHideShowAll.addEventListener("click", hideShowAll);
 btnSelectorHide.addEventListener("click", hideBySelector);
 yellowBlock.addEventListener("click", encreaseClicksCounter);
 yellowBlock.addEventListener("click", sayHello);
+btnMouseOn.addEventListener("mouseover", showRedBlock);
+btnMouseOn.addEventListener("mouseout", hideRedBlock);
+inputFocus.addEventListener("focus", showGreenBlock);
+inputFocus.addEventListener("input", hideGreenBlock);
+
+function hideGreenBlock() {
+    greenBlock.classList.add('hidden');
+}
+
+function showGreenBlock() {
+    greenBlock.classList.remove('hidden');
+}
+
+function hideRedBlock() {
+    redBlock.classList.add('hidden');
+}
+
+function showRedBlock() {
+    redBlock.classList.remove('hidden');
+}
 
 function sayHello() {
     alert("Hello! One more click and yellow square will disappear! Magic:)");
