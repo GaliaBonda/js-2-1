@@ -1,0 +1,52 @@
+.container {
+  padding: 20px;
+  text-align: center;
+}
+
+.exercises {
+  list-style-type: none;
+}
+
+.exercise-text {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.block {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.button {
+  height: 60px;
+  width: 100px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.blocks {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+.selector-input {
+  display: block;
+  margin: 30px auto;
+}
+
+.yellow-block {
+  background-color: yellow;
+  border: 2px solid black;
+}
