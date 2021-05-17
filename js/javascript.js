@@ -12,6 +12,7 @@ let inputFocus = document.getElementById('focus-input');
 let greenBlock = document.getElementById('green-block');
 let btnShowImg = document.getElementById('btn-show-img');
 let btnShowImgs = document.getElementById('btn-show-imgs');
+let container = document.querySelector('.container');
 
 let clicksField = document.createElement('div');
 let clicksFieldParagraph = document.createElement('p');
@@ -25,6 +26,16 @@ let inputToTextArea = document.getElementById("many-links-input");
 let parentLi = document.querySelector('.exercise:nth-child(9)');
 let textArea = document.createElement("textarea");
 parentLi.replaceChild(textArea, inputToTextArea);
+
+let coursorMonitor = document.createElement('div');
+let exercisesBlock = document.querySelector('.exercises');
+container.insertBefore(coursorMonitor, exercisesBlock);
+coursorMonitor.style.border = "2px solid black";
+coursorMonitor.style.width = "80px";
+coursorMonitor.style.height = "60px";
+coursorMonitor.style.position = "fixed";
+coursorMonitor.style.right = "30px";
+coursorMonitor.style.padding = "10px";
 
 btnCss.addEventListener("click", cssHide);
 btnJs.addEventListener("click", jsHide);
@@ -40,10 +51,14 @@ inputFocus.addEventListener("focus", showGreenBlock);
 inputFocus.addEventListener("input", hideGreenBlock);
 btnShowImg.addEventListener("click", addImage);
 btnShowImgs.addEventListener("click", addImages);
+window.addEventListener("mousemove", showCoursorCoordinates);
+
+function showCoursorCoordinates(event) {
+    coursorMonitor.innerText = "X: " + event.clientX + "\n Y: " + event.clientY;
+}
 
 function addImages() {
     let links = textArea.value.split('\n');
-    
     for (let i = 0; i < links.length; i++) {
         let imgField = document.createElement('div');
         let img = document.createElement('img');
