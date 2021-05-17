@@ -20,6 +20,10 @@ clicksField.appendChild(clicksFieldParagraph);
 let parent = document.querySelector('.exercise:nth-child(5)');
 parent.appendChild(clicksField);
 
+let inputToTextArea = document.getElementById("many-links-input");
+let parentLi = document.querySelector('.exercise:nth-child(9)');
+let textArea = document.createElement("textarea");
+
 btnCss.addEventListener("click", cssHide);
 btnJs.addEventListener("click", jsHide);
 btnCssJs.addEventListener("click", cssJsHide);
