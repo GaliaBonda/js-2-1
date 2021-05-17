@@ -27,15 +27,24 @@ let parentLi = document.querySelector('.exercise:nth-child(9)');
 let textArea = document.createElement("textarea");
 parentLi.replaceChild(textArea, inputToTextArea);
 
-let coursorMonitor = document.createElement('div');
+let monitor = document.createElement('div');
 let exercisesBlock = document.querySelector('.exercises');
-container.insertBefore(coursorMonitor, exercisesBlock);
-coursorMonitor.style.border = "2px solid black";
-coursorMonitor.style.width = "80px";
-coursorMonitor.style.height = "60px";
-coursorMonitor.style.position = "fixed";
-coursorMonitor.style.right = "30px";
-coursorMonitor.style.padding = "10px";
+container.insertBefore(monitor, exercisesBlock);
+monitor.style.border = "2px solid black";
+monitor.style.width = "100px";
+monitor.style.height = "240px";
+monitor.style.position = "fixed";
+monitor.style.right = "30px";
+monitor.style.padding = "10px";
+let coursorMonitor = document.createElement('p');
+monitor.appendChild(coursorMonitor);
+coursorMonitor.innerText = "X: " +  "\n Y: ";
+let languageMonitor = document.createElement('p');
+monitor.appendChild(languageMonitor);
+let geoMonitor = document.createElement('p');
+monitor.appendChild(geoMonitor);
+geoMonitor.innerText = "Geolocation is requested... ";
+
 
 btnCss.addEventListener("click", cssHide);
 btnJs.addEventListener("click", jsHide);
@@ -52,6 +61,25 @@ inputFocus.addEventListener("input", hideGreenBlock);
 btnShowImg.addEventListener("click", addImage);
 btnShowImgs.addEventListener("click", addImages);
 window.addEventListener("mousemove", showCoursorCoordinates);
+window.addEventListener("load", showLanguage);
+window.addEventListener("load", showGeo);
+
+function showGeo() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showGeoCoordinates);
+  } else { 
+    geoMonitor.innerText = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showGeoCoordinates(position) {
+    geoMonitor.innerText = "Latitude: " + position.coords.latitude + 
+  "\n Longitude: " + position.coords.longitude;
+}
+
+function showLanguage() {
+    languageMonitor.innerText = "Language \n" + navigator.language;
+}
 
 function showCoursorCoordinates(event) {
     coursorMonitor.innerText = "X: " + event.clientX + "\n Y: " + event.clientY;
