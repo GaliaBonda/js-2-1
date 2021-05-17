@@ -11,6 +11,7 @@ let redBlock = document.getElementById('red-block');
 let inputFocus = document.getElementById('focus-input');
 let greenBlock = document.getElementById('green-block');
 let btnShowImg = document.getElementById('btn-show-img');
+let btnShowImgs = document.getElementById('btn-show-imgs');
 
 let clicksField = document.createElement('div');
 let clicksFieldParagraph = document.createElement('p');
@@ -23,6 +24,7 @@ parent.appendChild(clicksField);
 let inputToTextArea = document.getElementById("many-links-input");
 let parentLi = document.querySelector('.exercise:nth-child(9)');
 let textArea = document.createElement("textarea");
+parentLi.replaceChild(textArea, inputToTextArea);
 
 btnCss.addEventListener("click", cssHide);
 btnJs.addEventListener("click", jsHide);
@@ -37,6 +39,21 @@ btnMouseOn.addEventListener("mouseout", hideRedBlock);
 inputFocus.addEventListener("focus", showGreenBlock);
 inputFocus.addEventListener("input", hideGreenBlock);
 btnShowImg.addEventListener("click", addImage);
+btnShowImgs.addEventListener("click", addImages);
+
+function addImages() {
+    let links = textArea.value.split('\n');
+    
+    for (let i = 0; i < links.length; i++) {
+        let imgField = document.createElement('div');
+        let img = document.createElement('img');
+        let parentToAppend = document.querySelector('.exercise:nth-child(9)');
+        imgField.appendChild(img);
+        parentToAppend.appendChild(imgField);
+        img.src = links[i];
+        img.style.width = "50%";
+    }
+}
 
 function addImage() {
     let inputLink = document.getElementById('link-input');
@@ -46,6 +63,7 @@ function addImage() {
     imgField.appendChild(img);
     parentToAppend.appendChild(imgField);
     img.src = inputLink.value;
+    img.style.width = "50%";
 }
 
 function hideGreenBlock() {
