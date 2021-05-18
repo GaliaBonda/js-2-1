@@ -1,3 +1,5 @@
+'use strict'
+
 let btnCss = document.getElementById('btn-css');
 let btnJs = document.getElementById('btn-js');
 let btnCssJs = document.getElementById('btn-css-js');
@@ -168,11 +170,11 @@ function hideShow() {
 
 function hideShowAll() {
     let blocks3 = document.getElementsByClassName('block3');
-    for (b of blocks3) {
-        if (b.classList.contains('hidden')) {
-            b.classList.remove('hidden');
+    for (let i = 0; i < blocks3.length; i++) {
+        if (blocks3[i].classList.contains('hidden')) {
+            blocks3[i].classList.remove('hidden');
         } else {
-            b.classList.add('hidden');
+            blocks3[i].classList.add('hidden');
         }
         
     }
@@ -181,11 +183,11 @@ function hideShowAll() {
 function hideBySelector() {
     let selectorName = document.getElementById('selector-input').value;
     let elementsToHide = document.querySelectorAll(selectorName);
-    for (el of elementsToHide) {
-        if (el.classList.contains('hidden')) {
-            el.classList.remove('hidden');
+    for (let i = 0; i < elementsToHide.length; i++) {
+        if (elementsToHide[i].classList.contains('hidden')) {
+            elementsToHide[i].classList.remove('hidden');
         } else {
-            el.classList.add('hidden');
+            elementsToHide[i].classList.add('hidden');
         }
     }
 }
