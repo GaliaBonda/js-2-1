@@ -79,9 +79,9 @@ function sayHello() {
 function removeYellowSquare() {
     if (clicksCounter > 0) {
         yellowBlock.removeEventListener("click", sayHello);
-    yellowBlock.addEventListener("click", function () {
-        yellowBlock.remove();
-    });
+        yellowBlock.addEventListener("click", function () {
+            yellowBlock.remove();
+        });
     }
 }
 
@@ -150,7 +150,7 @@ function addImages() {
     let links = textArea.value.split('\n');
     let parentToAppend = document.querySelector('.exercise:nth-child(9)');
 
-    for (let i = 0; i < links.length; i++) {   
+    for (let i = 0; i < links.length; i++) {
         createImg(links[i], parentToAppend);
     }
 }
@@ -162,20 +162,21 @@ window.addEventListener("mousemove", showCoursorCoordinates);
 
 function createMonitor() {
     let container = document.querySelector('.container');
-let monitor = document.createElement('div');
-let exercisesBlock = document.querySelector('.exercises');
-container.insertBefore(monitor, exercisesBlock);
-monitor.style.border = "2px solid black";
-monitor.style.width = "100px";
-monitor.style.height = "240px";
-monitor.style.position = "fixed";
-monitor.style.right = "30px";
+    let monitor = document.createElement('div');
+    let exercisesBlock = document.querySelector('.exercises');
+    container.insertBefore(monitor, exercisesBlock);
+    monitor.style.border = "2px solid black";
+    monitor.style.width = "100px";
+    monitor.style.height = "240px";
+    monitor.style.position = "fixed";
+    monitor.style.right = "30px";
     monitor.style.padding = "10px";
+    monitor.style.borderRadius = "5px";
     return monitor;
 }
 function addCoursorInfo() {
     let coursorMonitor = document.createElement('p');
-monitor.appendChild(coursorMonitor);
+    monitor.appendChild(coursorMonitor);
     coursorMonitor.innerText = "X: " + "\n Y: ";
     return coursorMonitor;
 }
@@ -203,8 +204,8 @@ let geoMonitor = addGeoInfo();
 window.addEventListener("load", showGeo);
 
 function addGeoInfo() {
-let geoMonitor = document.createElement('p');
-monitor.appendChild(geoMonitor);
+    let geoMonitor = document.createElement('p');
+    monitor.appendChild(geoMonitor);
     geoMonitor.innerText = "Geolocation is requested... ";
     return geoMonitor;
 }
@@ -212,12 +213,65 @@ monitor.appendChild(geoMonitor);
 function showGeo() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showGeoCoordinates);
-  } else { 
-    geoMonitor.innerText = "Geolocation is not supported by this browser.";
-  }
+    } else {
+        geoMonitor.innerText = "Geolocation is not supported by this browser.";
+    }
 }
 
 function showGeoCoordinates(position) {
-    geoMonitor.innerText = "Latitude: " + position.coords.latitude + 
-  "\n Longitude: " + position.coords.longitude;
+    geoMonitor.innerText = "Latitude: " + position.coords.latitude.toFixed(7) +
+        "\n Longitude: " + position.coords.longitude.toFixed(7);
+}
+
+//Exercise 13
+
+//Local storage
+let localStorageBlock = document.getElementById('local-storage-block');
+localStorageBlock.addEventListener("input", saveToLocalStorage)
+window.addEventListener("load", loadLocalStorageInput);
+
+function saveToLocalStorage() {
+    localStorage.setItem('user-input', localStorageBlock.innerHTML);
+}
+
+function loadLocalStorageInput() {
+    if (localStorage.getItem('user-input') != null) {
+        localStorageBlock.innerHTML = localStorage.getItem('user-input');
+    }
+}
+
+//Cookies
+let cookiesBlock = document.getElementById('cookies-block');
+cookiesBlock.addEventListener("input", saveAsCookies);
+window.addEventListener("load", loadCookies);
+
+function saveAsCookies() {
+    document.cookie = "user-input=" + cookiesBlock.innerHTML;
+}
+
+function loadCookies() {
+    let cookiesArr = document.cookie.split(";");
+    let userCookie = "";
+    for (let i = 0; i < cookiesArr.length; i++) {
+        let indexOfUserCookie = cookiesArr[i].search(/(user-input)/);
+        if (indexOfUserCookie != -1) {
+            userCookie = cookiesArr[i].substr(indexOfUserCookie + 11);
+        }
+    }
+    cookiesBlock.innerHTML = userCookie;
+}
+
+//Session storage
+let sessionStorageBlock = document.getElementById('session-storage-block');
+sessionStorageBlock.addEventListener("input", saveToSessionStorage);
+window.addEventListener("load", loadSessionStorageInput);
+
+function saveToSessionStorage() {
+    sessionStorage.setItem('user-input', sessionStorageBlock.innerHTML);
+}
+
+function loadSessionStorageInput() {
+    if (sessionStorage.getItem('user-input') != null) {
+        sessionStorageBlock.innerHTML = sessionStorage.getItem('user-input');
+    }
 }
