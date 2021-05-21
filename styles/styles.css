@@ -80,3 +80,38 @@
 .input-block-title {
   font-size: 16px;
 }
+
+.up-button {
+  width: 80px;
+  height: 50px;
+  background-color: brown;
+  color: white;
+  font-weight: 600;
+  border: none;
+  text-transform: uppercase;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}
+
+.big-block {
+  margin: 0 auto;
+  width: 400px;
+  height: 200px;
+  background-color: tomato;
+  border-radius: 5px;
+  padding-top: 75px;
+}
+
+.little-block {
+  margin: 0 auto;
+  width: 100px;
+  height: 50px;
+  background-color: rgb(92, 255, 71);
+  border-radius: 5px;
+}
+
+.window-blocker {
+  width: 100px;
+  height: 50px;
+}
