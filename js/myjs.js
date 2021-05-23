@@ -345,12 +345,10 @@ function noReload() {
 
 //Exercise 18
 document.addEventListener("dragover", function (event) {
-    // prevent default to allow drop
     event.preventDefault();
 });
 
 document.addEventListener("dragenter", function (event) {
-    // highlight potential drop target when the draggable element enters it
     if (event.target.className == "file-input") {
         event.target.style.background = "greenYellow";
         event.target.style.border = "2px solid grey";
@@ -361,7 +359,6 @@ document.addEventListener("dragenter", function (event) {
 });
 
 document.addEventListener("dragleave", function (event) {
-    // reset background of potential drop target when the draggable element leaves it
     if (event.target.className == "file-input") {
         event.target.style.background = "";
         event.target.style.border = "2px solid black";
@@ -372,12 +369,10 @@ document.addEventListener("dragleave", function (event) {
 });
 
 document.addEventListener("drop", function (event) {
-    // prevent default action (open as link for some elements)
     event.preventDefault();
-    // move dragged elem to the selected drop target
     if (event.target.className == "file-input") {
         event.target.style.background = "green";
-        event.target.innerHTML = "File downloaded";
+        event.target.innerHTML = "File selected successfully";
         event.target.style.color = "black";
         event.target.style.border = "2px solid black";
     }
