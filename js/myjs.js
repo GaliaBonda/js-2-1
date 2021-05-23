@@ -318,7 +318,7 @@ function stopProganation(event) {
 //Exercise 16
 document.getElementById('window-blocker').addEventListener("click", blockWindow);
 let blocker = document.createElement('div');
-document.getElementById('window-blocker').appendChild(blocker);
+document.querySelector('.exercise:nth-child(16)').appendChild(blocker);
 blocker.addEventListener("click", removeBlocker);
 
 function blockWindow() {
@@ -330,10 +330,11 @@ function blockWindow() {
     blocker.style.left = "0px";
     blocker.style.opacity = "30%";
     document.body.style.overflow = "hidden";
+
 }
 
 function removeBlocker() {
     document.body.style.overflow = "auto";
     blocker.remove();
-
 }
+
